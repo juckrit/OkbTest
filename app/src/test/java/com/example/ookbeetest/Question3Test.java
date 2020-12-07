@@ -2,7 +2,10 @@ package com.example.ookbeetest;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class Question3Test {
 
@@ -17,9 +20,10 @@ public class Question3Test {
 
         int[] array = new int[]{1, 8, 2, 6, 5, 3, 5, 0};
 
-        assertEquals(8, GetMaxTwo(array)[0]);
-        assertEquals(6, GetMaxTwo(array)[1]);
-
+//        assertEquals(8, GetMaxTwo(array)[0]);
+//        assertEquals(6, GetMaxTwo(array)[1]);
+        assertThat("First is",8, equalTo(GetMaxTwo(array)[0]));
+        assertThat("Second is",6, equalTo(GetMaxTwo(array)[1]));
     }
 
 

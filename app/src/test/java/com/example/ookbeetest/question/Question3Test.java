@@ -1,4 +1,4 @@
-package com.example.ookbeetest;
+package com.example.ookbeetest.question;
 
 import org.junit.Test;
 

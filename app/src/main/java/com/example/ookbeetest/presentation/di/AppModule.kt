@@ -1,6 +1,5 @@
 package com.example.ookbeetest.presentation.di
 
-import com.example.ookbeetest.BuildConfig
 import com.example.ookbeetest.DI_NAME_AUTHORIZATION_KEY
 import com.example.ookbeetest.DI_NAME_BOOKREPOSITORY
 import com.example.ookbeetest.DI_NAME_INSERTBOOKUSECASE
@@ -13,8 +12,6 @@ import com.example.ookbeetest.presentation.main.MainViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 val appMoule = module {
 
@@ -23,16 +20,17 @@ val appMoule = module {
     }
 
     single {
-        Retrofit.Builder().baseUrl(BuildConfig.BASE_API_URL)
-            .addConverterFactory(GsonConverterFactory.create()).build()
+        OokBeeService.instance
+//        Retrofit.Builder().baseUrl(BuildConfig.BASE_API_URL)
+//            .addConverterFactory(GsonConverterFactory.create()).build()
     }
 
-    single {
-        get<Retrofit>().create(OokBeeService::class.java)
-    }
+//    single {
+//        get<Retrofit>().create(OokBeeService::class.java)
+//    }
 
     single {
-        BookRemoteDataSourceImpl(get(),get(named(DI_NAME_AUTHORIZATION_KEY)))
+        BookRemoteDataSourceImpl(get(), get(named(DI_NAME_AUTHORIZATION_KEY)))
     }
 
     single<BookRepository>(named(DI_NAME_BOOKREPOSITORY)) {

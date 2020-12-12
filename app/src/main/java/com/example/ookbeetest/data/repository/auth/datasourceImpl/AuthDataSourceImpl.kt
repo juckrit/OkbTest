@@ -5,11 +5,11 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.example.ookbeetest.MY_PREFS_KEY_TOKEN
-import com.example.ookbeetest.data.repository.auth.datasource.AuthDatasource
+import com.example.ookbeetest.data.repository.auth.datasource.AuthDataSource
 
 
 class AuthDataSourceImpl(private val context: Context) :
-    AuthDatasource {
+    AuthDataSource {
 
     var masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
     var sharedPreferences: SharedPreferences = EncryptedSharedPreferences.create(

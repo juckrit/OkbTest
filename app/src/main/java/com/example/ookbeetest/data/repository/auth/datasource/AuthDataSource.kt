@@ -1,6 +1,6 @@
 package com.example.ookbeetest.data.repository.auth.datasource
 
-interface AuthDatasource {
+interface AuthDataSource {
 
     fun saveToken(token:String)
     fun getToken():String

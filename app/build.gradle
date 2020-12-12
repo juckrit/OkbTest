@@ -25,9 +25,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources false
-            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 //            http://api.ookbee.com/user/{userId}/books
             buildConfigField "String", "BASE_API_URL", "\"http://api.ookbee.com/\""
@@ -35,9 +35,9 @@ android {
         }
 
         debug {
-            minifyEnabled true
-            shrinkResources true
-            debuggable false
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
 //            http://api.ookbee.com/user/{userId}/books
             buildConfigField "String", "BASE_API_URL", "\"http://api.ookbee.com/\""
 

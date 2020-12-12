@@ -1,8 +1,8 @@
-package com.example.ookbeetest.data.repository
+package com.example.ookbeetest.data.repository.book
 
 import com.example.ookbeetest.data.model.InsertUserBookReponseModel
 import com.example.ookbeetest.data.model.InsertUserBookRequestModel
-import com.example.ookbeetest.data.repository.datasourceImpl.BookRemoteDataSourceImpl
+import com.example.ookbeetest.data.repository.book.datasourceImpl.BookRemoteDataSourceImpl
 import com.example.ookbeetest.domain.repository.BookRepository
 
 class BookRepositoryImpl(
@@ -14,6 +14,6 @@ class BookRepositoryImpl(
         userId: Int,
         insertUserBookRequestModel: InsertUserBookRequestModel
     ): List<InsertUserBookReponseModel> {
-        return bookRemoteDataSourceImpl.insertBookToServer(userId, insertUserBookRequestModel)
+        return bookRemoteDataSourceImpl.insertBookToServer(userId, insertUserBookRequestModel,accessToken)
     }
 }

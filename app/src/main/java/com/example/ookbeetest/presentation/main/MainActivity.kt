@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        mainViewModel.saveToken("myToken")
         observe()
 
         binding.btnSend.setOnClickListener {

@@ -31,18 +31,4 @@ interface OokBeeService {
         , @Body insertUserBookRequestModel: InsertUserBookRequestModel
     ): List<InsertUserBookReponseModel>
 
-    companion object {
-        val instance: OokBeeService by lazy {
-            Retrofit.Builder().baseUrl(BASE_USER_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-                .build()
-                .create(OokBeeService::class.java)
-        }
-
-        private val client = OkHttpClient().newBuilder()
-//            .addInterceptor(TokenExpiredInterceptor())
-            .build()
-    }
-
 }

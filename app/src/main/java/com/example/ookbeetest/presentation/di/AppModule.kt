@@ -1,6 +1,7 @@
 package com.example.ookbeetest.presentation.di
 
 import com.example.ookbeetest.*
+import com.example.ookbeetest.data.api.BASE_USER_URL
 import com.example.ookbeetest.data.api.OokBeeService
 import com.example.ookbeetest.data.repository.auth.AuthRepositoryImpl
 import com.example.ookbeetest.data.repository.auth.datasourceImpl.AuthDataSourceImpl
@@ -12,14 +13,28 @@ import com.example.ookbeetest.domain.usecase.GetTokenUseCase
 import com.example.ookbeetest.domain.usecase.InsertBookUseCase
 import com.example.ookbeetest.domain.usecase.SaveTokenUseCase
 import com.example.ookbeetest.presentation.main.MainViewModel
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 val appMoule = module {
 
     single(named(DI_NAME_OokBeeService)) {
-        OokBeeService.instance
+        val client = OkHttpClient().newBuilder()
+//            .addInterceptor(TokenExpiredInterceptor())
+            .build()
+        val instance: OokBeeService by lazy {
+            Retrofit.Builder().baseUrl(BASE_USER_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+                .build()
+                .create(OokBeeService::class.java)
+        }
+        instance
     }
 
     single(named(DI_NAME_BookRemoteDataSourceImpl)) {

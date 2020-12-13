@@ -11,8 +11,9 @@ import com.example.ookbeetest.data.repository.auth.datasource.AuthDataSource
 class AuthDataSourceImpl(private val context: Context) :
     AuthDataSource {
 
-    var masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-    var sharedPreferences: SharedPreferences = EncryptedSharedPreferences.create(
+    //    รัน test ไม่ผ่านเพราะ masterKeyAlias ไม่รู้ว่าทำไม
+    private val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+    private val sharedPreferences: SharedPreferences = EncryptedSharedPreferences.create(
         "secret_shared_prefs",
         masterKeyAlias,
         context,

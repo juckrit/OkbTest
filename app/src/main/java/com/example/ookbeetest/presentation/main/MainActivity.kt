@@ -90,7 +90,9 @@ class MainActivity : AppCompatActivity() {
 //        คำตอบ:
 //        [ใส่คำตอบตรงนี้]
         //Third-party libraries ดูจาก gradle ได้เลยครับ
-        //หลักๆก็พวก retrofit coroutine
+        //หลักๆก็พวก retrofit ใช้ต่อ api
+        //         GsonConverterFactory ใช้แปลง json
+        //         coroutine ใช้คู่  retrofit กับ threading
 
     }
 
